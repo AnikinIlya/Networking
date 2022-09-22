@@ -44,16 +44,17 @@ class CharacterViewController: UIViewController {
             Location: \(character?.location?.name ?? "unknown")
         """
         
-        DispatchQueue.global().async {
-            guard let url = URL(string: self.character?.image ?? "") else { return }
-            guard let imageData = try? Data(contentsOf: url) else { return }
-            DispatchQueue.main.async {
-                self.characterImageView.image = UIImage(data: imageData)
+        NetworkManager.shared.fetchImage(from: self.character?.image) {[weak self] result in
+            switch result {
+            case .success(let imageData):
+                self?.characterImageView.image = UIImage(data: imageData)
+            case .failure(let error):
+                print(error)
             }
+            
+            self?.imageActivityIndiacator.stopAnimating()
+            self?.imageActivityIndiacator.isHidden = true
         }
-        
-        imageActivityIndiacator.stopAnimating()
-        imageActivityIndiacator.isHidden = true
     }
     
     private func getUrl() -> String {
@@ -63,6 +64,24 @@ class CharacterViewController: UIViewController {
             characterNumberCounter += 1
         }
         return "https://rickandmortyapi.com/api/character/\(characterNumberCounter)"
+    }
+}
+
+//MARK: - Networking
+extension CharacterViewController {
+    func fetchCharacter() {
+        let characterUrl = getUrl()
+        
+        NetworkManager.shared.fetchCharacter(from: characterUrl) { [weak self] result in
+            switch result {
+            case .success(let characterData):
+                self?.character = characterData
+            case .failure(let error):
+                print(error)
+                self?.failAlert()
+            }
+        }
+        
     }
     
     private func failAlert() {
@@ -77,29 +96,5 @@ class CharacterViewController: UIViewController {
             alert.addAction(okAction)
             self.present(alert, animated: true)
         }
-    }
-    
-}
-
-//MARK: - Extensions
-extension CharacterViewController {
-    func fetchCharacter() {
-        let characterUrl = getUrl()
-        
-        guard let url = URL(string: characterUrl) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, error in
-            guard let data = data else {
-                print(error?.localizedDescription ?? "No error description")
-                return
-            }
-            
-            do {
-                self.character = try JSONDecoder().decode(Character.self, from: data)
-            } catch {
-                self.failAlert()
-                print(error.localizedDescription)
-            }
-        }.resume()
     }
 }

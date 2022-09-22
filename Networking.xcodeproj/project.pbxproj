@@ -15,6 +15,7 @@
 		0902BBAD28DC5CF6008A28AF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0902BBAC28DC5CF6008A28AF /* MainViewController.swift */; };
 		096FCBB728DC64B700455BFF /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096FCBB628DC64B700455BFF /* Character.swift */; };
 		096FCBBB28DC6DD600455BFF /* CharacterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096FCBBA28DC6DD600455BFF /* CharacterViewController.swift */; };
+		09A376E228DCB53E003261C2 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A376E128DCB53E003261C2 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		0902BBAC28DC5CF6008A28AF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		096FCBB628DC64B700455BFF /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		096FCBBA28DC6DD600455BFF /* CharacterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterViewController.swift; sourceTree = "<group>"; };
+		09A376E128DCB53E003261C2 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				0902BB9428DC5B19008A28AF /* AppDelegate.swift */,
 				0902BB9628DC5B19008A28AF /* SceneDelegate.swift */,
+				09A376E128DCB53E003261C2 /* NetworkManager.swift */,
 				096FCBB928DC64CA00455BFF /* Models */,
 				0902BBA828DC5B6A008A28AF /* ViewControllers */,
 				0902BBA928DC5B79008A28AF /* Storyboards */,
@@ -176,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A376E228DCB53E003261C2 /* NetworkManager.swift in Sources */,
 				0902BBAD28DC5CF6008A28AF /* MainViewController.swift in Sources */,
 				096FCBBB28DC6DD600455BFF /* CharacterViewController.swift in Sources */,
 				0902BB9528DC5B19008A28AF /* AppDelegate.swift in Sources */,

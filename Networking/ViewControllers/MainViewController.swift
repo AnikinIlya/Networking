@@ -35,8 +35,13 @@ class MainViewController: UIViewController {
     }
     
     private func fetchLogo() {
-        guard let url = URL(string: logoUrl) else { return }
-        guard let imageData = try? Data(contentsOf: url) else { return }
-        logoImage.image = UIImage(data: imageData)
+        NetworkManager.shared.fetchImage(from: logoUrl) {[weak self] result in
+            switch result {
+            case .success(let imageData):
+                self?.logoImage.image = UIImage(data: imageData)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
