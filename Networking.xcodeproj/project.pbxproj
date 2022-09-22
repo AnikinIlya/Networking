@@ -64,8 +64,8 @@
 			children = (
 				0902BB9428DC5B19008A28AF /* AppDelegate.swift */,
 				0902BB9628DC5B19008A28AF /* SceneDelegate.swift */,
-				09A376E128DCB53E003261C2 /* NetworkManager.swift */,
 				096FCBB928DC64CA00455BFF /* Models */,
+				09A376E128DCB53E003261C2 /* NetworkManager.swift */,
 				0902BBA828DC5B6A008A28AF /* ViewControllers */,
 				0902BBA928DC5B79008A28AF /* Storyboards */,
 				0902BBAA28DC5C03008A28AF /* Resources */,
